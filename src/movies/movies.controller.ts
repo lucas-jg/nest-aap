@@ -45,8 +45,10 @@ export class MoviesController {
 
   // 일부분 수정할 때 사용됨
   @Patch(':id')
-  patch(@Param('id') movieId: string) {
-    return `This will patch one movie with the id : ${movieId}`
+  patch(@Param('id') movieId: string, @Body() updateData: Movie) {
+    console.log(updateData)
+
+    return this.moviesService.update(movieId, updateData)
   }
 
   @Put(':id')
